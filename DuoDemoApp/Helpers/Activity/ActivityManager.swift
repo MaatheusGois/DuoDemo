@@ -18,7 +18,7 @@ class ActivityManager: ObservableObject {
             return
         }
 
-        let attributes = DuoDemoAppAttributes()
+        let attributes = DuoDemoAppAttributes(flow: .home)
         let contentState = DuoDemoAppAttributes.LiveDeliveryData(
             currentLesson: 3,
             numberOfLessons: 12,

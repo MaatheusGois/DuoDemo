@@ -14,7 +14,10 @@ struct NotificationManager {
     static func registerForNotification() {
         UIApplication.shared.registerForRemoteNotifications()
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.sound, .alert, .badge], completionHandler: { _, error in
+        center.requestAuthorization(
+            options: [.sound, .alert, .badge],
+            completionHandler: { _, error in
+
             if error == nil {
                 status = .enable
             } else {

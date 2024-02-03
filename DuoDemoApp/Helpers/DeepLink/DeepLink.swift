@@ -7,16 +7,14 @@
 
 import Foundation
 
-enum DeepLink: ReflectiveEquatable {
+enum DeepLink: String, Codable {
+    case home
+    case details
 
-    static var path: String = Bundle.main.bundleURL.absoluteString
-
-    case home(number: Int)
+    static let path: String = "com.maatheusgois.duo.demo"
+    static let param: String = "flow"
 
     var url: String {
-        switch self {
-        case .home(let number):
-            return "\(Self.path)://?number=\(number)"
-        }
+        "\(Self.path)://?\(Self.param)=\(rawValue)"
     }
 }

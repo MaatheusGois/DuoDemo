@@ -24,8 +24,6 @@
 		2E0048CB2B6E9FE500B61537 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048CA2B6E9FE500B61537 /* ActivityManager.swift */; };
 		2E0048CF2B6EAC4D00B61537 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048CE2B6EAC4D00B61537 /* DeepLink.swift */; };
 		2E0048D02B6EAC9300B61537 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048CE2B6EAC4D00B61537 /* DeepLink.swift */; };
-		2E0048D22B6EADD000B61537 /* ReflectiveEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048D12B6EADD000B61537 /* ReflectiveEquatable.swift */; };
-		2E0048D32B6EADE500B61537 /* ReflectiveEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048D12B6EADD000B61537 /* ReflectiveEquatable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +71,6 @@
 		2E0048C62B6E9DC400B61537 /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
 		2E0048CA2B6E9FE500B61537 /* ActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
 		2E0048CE2B6EAC4D00B61537 /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
-		2E0048D12B6EADD000B61537 /* ReflectiveEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectiveEquatable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +175,6 @@
 			children = (
 				2E0048C62B6E9DC400B61537 /* DeepLinkManager.swift */,
 				2E0048CE2B6EAC4D00B61537 /* DeepLink.swift */,
-				2E0048D12B6EADD000B61537 /* ReflectiveEquatable.swift */,
 			);
 			path = DeepLink;
 			sourceTree = "<group>";
@@ -314,7 +310,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				13BBEA6628A7DD5D00FB1686 /* ContentView.swift in Sources */,
-				2E0048D22B6EADD000B61537 /* ReflectiveEquatable.swift in Sources */,
 				2E0048CF2B6EAC4D00B61537 /* DeepLink.swift in Sources */,
 				13BBEA8928A7DEAB00FB1686 /* DuoDemoAppAttributes.swift in Sources */,
 				2E0048CB2B6E9FE500B61537 /* ActivityManager.swift in Sources */,
@@ -329,7 +324,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E0048D02B6EAC9300B61537 /* DeepLink.swift in Sources */,
-				2E0048D32B6EADE500B61537 /* ReflectiveEquatable.swift in Sources */,
 				13BBEA8A28A7DEAB00FB1686 /* DuoDemoAppAttributes.swift in Sources */,
 				13BBEA7D28A7DDA100FB1686 /* DuoTrackWidget.swift in Sources */,
 			);

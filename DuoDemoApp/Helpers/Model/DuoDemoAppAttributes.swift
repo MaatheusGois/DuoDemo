@@ -12,9 +12,9 @@ struct DuoDemoAppAttributes: ActivityAttributes, Identifiable {
     public typealias LiveDeliveryData = ContentState
 
     public struct ContentState: Codable, Hashable {
-        var currentLesson: CGFloat
-        var numberOfLessons: CGFloat
-        var initialTime: Date
+        let currentLesson: CGFloat
+        let numberOfLessons: CGFloat
+        let initialTime: Date
 
         var progress: CGFloat {
             currentLesson / numberOfLessons
@@ -33,5 +33,6 @@ struct DuoDemoAppAttributes: ActivityAttributes, Identifiable {
         }
     }
 
-    var id = UUID()
+    let flow: DeepLink
+    let id = UUID()
 }

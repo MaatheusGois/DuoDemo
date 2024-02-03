@@ -128,7 +128,7 @@ struct DuoDemoApp: Widget {
 struct LockScreenView: View {
     var context: ActivityViewContext<DuoDemoAppAttributes>
     var body: some View {
-        let url = URL(string: DeepLink.home(number: 1).url)
+        let url = URL(string: DeepLink.home.url)
         return Link(destination: url!) {
             ZStack {
                 VStack(alignment: .leading) {
