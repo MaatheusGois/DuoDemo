@@ -10,6 +10,7 @@ import SwiftUI
 
 class ActivityManager: ObservableObject {
     @Published var activities = Activity<DuoDemoAppAttributes>.activities
+    private var initalDate = Date()
 
     func createActivity() {
         guard NotificationManager.status == .enable else {
@@ -17,8 +18,12 @@ class ActivityManager: ObservableObject {
             return
         }
 
-        let attributes = DuoDemoAppAttributes(numberOfGroceyItems: 12)
-        let contentState = DuoDemoAppAttributes.LiveDeliveryData(courierName: "", percentage: 0.3)
+        let attributes = DuoDemoAppAttributes()
+        let contentState = DuoDemoAppAttributes.LiveDeliveryData(
+            currentLesson: 3,
+            numberOfLessons: 12,
+            initialTime: initalDate
+        )
         do {
             _ = try Activity<DuoDemoAppAttributes>.request(
                 attributes: attributes,
@@ -33,8 +38,9 @@ class ActivityManager: ObservableObject {
     func update(activity: Activity<DuoDemoAppAttributes>) {
         Task {
             let updatedStatus = DuoDemoAppAttributes.LiveDeliveryData(
-                courierName: "",
-                percentage: 0.5
+                currentLesson: 6,
+                numberOfLessons: 12,
+                initialTime: initalDate
             )
             await activity.update(using: updatedStatus)
         }

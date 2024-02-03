@@ -65,12 +65,10 @@ extension ContentView {
     }
 
     func activityView(_ activity: Activity<DuoDemoAppAttributes>) -> some View {
-        let courierName = activity.contentState.courierName
-        let deliveryTime = activity.contentState.percentage
 
         return HStack(alignment: .center) {
-            Text(courierName)
-            Text(verbatim: "Update")
+            Text("\(activity.contentState.progressString)% -")
+            Text(activity.contentState.initialTime, style: .timer)
             Text("update")
                 .font(.headline)
                 .foregroundColor(.green)

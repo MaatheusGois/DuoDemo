@@ -58,35 +58,36 @@ struct DuoDemoApp: Widget {
     func dynamicIslandExpandedLeadingView(context: ActivityViewContext<DuoDemoAppAttributes>) -> some View {
         VStack {
             Label {
-                Text("\(context.attributes.numberOfGroceyItems)")
+                Text("\(context.state.numberOfLessonsString)")
                     .font(.title2)
             } icon: {
-                Image("duo-icon")
+                Image("duo-icon-full")
             }
-            Text("items")
+            Text("steps")
                 .font(.title2)
         }
     }
 
     func dynamicIslandExpandedTrailingView(context: ActivityViewContext<DuoDemoAppAttributes>) -> some View {
         Label {
-            Text(verbatim: "Text")
+            Text(context.state.initialTime, style: .timer)
                 .multilineTextAlignment(.trailing)
                 .frame(width: 50)
                 .monospacedDigit()
         } icon: {
-            Image(systemName: "timer")
-                .foregroundColor(.green)
+            Image("duo-icon-full")
+                .resizable()
+                .scaledToFit()
         }
         .font(.title2)
     }
 
     func dynamicIslandExpandedBottomView(context: ActivityViewContext<DuoDemoAppAttributes>) -> some View {
-        Label("Call courier", systemImage: "phone")
+        Label("", systemImage: "")
     }
 
     func dynamicIslandExpandedCenterView(context: ActivityViewContext<DuoDemoAppAttributes>) -> some View {
-        Text("\(context.state.courierName) is on the way!")
+        Text("")
             .lineLimit(1)
             .font(.caption)
     }
@@ -96,9 +97,9 @@ struct DuoDemoApp: Widget {
     func compactLeadingView(context: ActivityViewContext<DuoDemoAppAttributes>) -> some View {
         VStack {
             Label {
-                Text("\(context.attributes.numberOfGroceyItems) items")
+                Text("\(context.state.currentLessonString)/\(context.state.numberOfLessonsString)")
             } icon: {
-                Image("duo-icon")
+                Image("duo-icon-full")
                     .resizable()
                     .scaledToFit()
             }
@@ -107,7 +108,7 @@ struct DuoDemoApp: Widget {
     }
 
     func compactTrailingView(context: ActivityViewContext<DuoDemoAppAttributes>) -> some View {
-        Text(verbatim: "Trailing")
+        Text(context.state.initialTime, style: .timer)
             .multilineTextAlignment(.center)
             .frame(width: 40)
             .font(.caption2)
@@ -115,8 +116,7 @@ struct DuoDemoApp: Widget {
 
     func minimalView(context: ActivityViewContext<DuoDemoAppAttributes>) -> some View {
         VStack(alignment: .center) {
-            Image(systemName: "timer")
-            Text(verbatim: "MinimalView")
+            Text(context.state.initialTime, style: .timer)
                 .multilineTextAlignment(.center)
                 .monospacedDigit()
                 .font(.caption2)
@@ -135,7 +135,7 @@ struct LockScreenView: View {
                     HStack {
                         VStack(alignment: .leading) {
                             HStack {
-                                ProgressBar(progress: context.state.percentage)
+                                ProgressBar(progress: context.state.progress)
                                     .frame(minHeight: 16)
                                     .padding(.bottom, 6)
                             }
@@ -146,8 +146,8 @@ struct LockScreenView: View {
                                         .font(.title3)
                                         .fontWeight(.bold)
 
-                                    Text("It's been \(context.attributes.numberOfGroceyItems) since you started.")
-                                        .font(.headline)
+                                    Text("It's been \(context.state.initialTime, style: .timer) since you started.")
+                                        .font(.subheadline)
                                         .fontWeight(.thin)
                                 }
                                 Spacer()

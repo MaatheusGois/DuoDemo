@@ -12,10 +12,26 @@ struct DuoDemoAppAttributes: ActivityAttributes, Identifiable {
     public typealias LiveDeliveryData = ContentState
 
     public struct ContentState: Codable, Hashable {
-        var courierName: String
-        var percentage: CGFloat
+        var currentLesson: CGFloat
+        var numberOfLessons: CGFloat
+        var initialTime: Date
+
+        var progress: CGFloat {
+            currentLesson / numberOfLessons
+        }
+
+        var progressString: String {
+            String(Int(currentLesson / numberOfLessons * 100))
+        }
+
+        var currentLessonString: String {
+            String(Int(currentLesson))
+        }
+
+        var numberOfLessonsString: String {
+            String(Int(numberOfLessons))
+        }
     }
 
-    var numberOfGroceyItems: Int
     var id = UUID()
 }
