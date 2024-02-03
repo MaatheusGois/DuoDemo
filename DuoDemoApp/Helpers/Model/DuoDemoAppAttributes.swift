@@ -13,7 +13,7 @@ struct DuoDemoAppAttributes: ActivityAttributes, Identifiable {
 
     public struct ContentState: Codable, Hashable {
         var courierName: String
-        var deliveryTime: Date
+        var percentage: CGFloat
     }
 
     var numberOfGroceyItems: Int

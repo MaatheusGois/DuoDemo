@@ -10,127 +10,81 @@ import SwiftUI
 
 @available(iOS 16.1, *)
 struct ContentView: View {
-    @State var activities = Activity<DuoDemoAppAttributes>.activities
+    @ObservedObject var manager = ActivityManager()
+
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    Text("Create an activity to start a live activity")
+                    Text("Create an activity to start a live activity").fontWeight(.ultraLight)
+
                     Button(action: {
-                        createActivity()
-                        listAllDeliveries()
+                        manager.createActivity()
+                        manager.listAllDeliveries()
                     }) {
-                        Text("Create Activity").font(.headline)
-                    }.tint(.green)
-                    Button(action: {
-                        listAllDeliveries()
-                    }) {
-                        Text("List All Activities").font(.headline)
-                    }.tint(.green)
-                    Button(action: {
-                        endAllActivity()
-                        listAllDeliveries()
-                    }) {
-                        Text("End All Activites").font(.headline)
-                    }.tint(.green)
-                }
-                Section {
-                    if !activities.isEmpty {
-                        Text("Live Activities")
+                        Text("Create Activity")
                     }
-                    activitiesView()
+
+                    Button(action: {
+                        manager.listAllDeliveries()
+                    }) {
+                        Text("List All Activities")
+                    }
+
+                    Button(action: {
+                        manager.endAllActivity()
+                        manager.listAllDeliveries()
+                    }) {
+                        Text("End All Activites")
+                    }
+                }
+                if !manager.activities.isEmpty {
+                    Section {
+                        Text("Live Activities")
+
+                        activitiesView()
+                    }
                 }
             }
-            .navigationTitle("Welcome!")
-            .fontWeight(.ultraLight)
+            .navigationTitle("DuoDemo!")
         }
-    }
-
-    func createActivity() {
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
-
-            if let error {
-                // Handle the error here.
-            }
-
-            // Enable or disable features based on the authorization.
-        }
-
-        let attributes = DuoDemoAppAttributes(numberOfGroceyItems: 12)
-        let contentState = DuoDemoAppAttributes.LiveDeliveryData(courierName: "Mike", deliveryTime: .now + 120)
-        do {
-            _ = try Activity<DuoDemoAppAttributes>.request(
-                attributes: attributes,
-                contentState: contentState,
-                pushType: .token
-            )
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-
-    func update(activity: Activity<DuoDemoAppAttributes>) {
-        Task {
-            let updatedStatus = DuoDemoAppAttributes.LiveDeliveryData(
-                courierName: "Adam",
-                deliveryTime: .now + 150
-            )
-            await activity.update(using: updatedStatus)
-        }
-    }
-
-    func end(activity: Activity<DuoDemoAppAttributes>) {
-        Task {
-            await activity.end(dismissalPolicy: .immediate)
-        }
-    }
-
-    func endAllActivity() {
-        Task {
-            for activity in Activity<DuoDemoAppAttributes>.activities {
-                await activity.end(dismissalPolicy: .immediate)
-            }
-        }
-    }
-
-    func listAllDeliveries() {
-        var activities = Activity<DuoDemoAppAttributes>.activities
-        activities.sort { $0.id > $1.id }
-        self.activities = activities
     }
 }
+
+// MARK: - List
 
 @available(iOS 16.1, *)
 extension ContentView {
 
     func activitiesView() -> some View {
-        var body: some View {
-            ScrollView {
-                ForEach(activities, id: \.id) { activity in
-                    let courierName = activity.contentState.courierName
-                    let deliveryTime = activity.contentState.deliveryTime
-                    HStack(alignment: .center) {
-                        Text(courierName)
-                        Text(deliveryTime, style: .timer)
-                        Text("update")
-                            .font(.headline)
-                            .foregroundColor(.green)
-                            .onTapGesture {
-                                update(activity: activity)
-                                listAllDeliveries()
-                            }
-                        Text("end")
-                            .font(.headline)
-                            .foregroundColor(.green)
-                            .onTapGesture {
-                                end(activity: activity)
-                                listAllDeliveries()
-                            }
-                    }
-                }
+        ScrollView {
+            ForEach(manager.activities, id: \.id) { activity in
+                activityView(activity)
             }
         }
-        return body
+    }
+
+    func activityView(_ activity: Activity<DuoDemoAppAttributes>) -> some View {
+        let courierName = activity.contentState.courierName
+        let deliveryTime = activity.contentState.percentage
+
+        return HStack(alignment: .center) {
+            Text(courierName)
+            Text(verbatim: "Update")
+            Text("update")
+                .font(.headline)
+                .foregroundColor(.green)
+                .onTapGesture {
+                    manager.update(activity: activity)
+                    manager.listAllDeliveries()
+                }
+            Text("end")
+                .font(.headline)
+                .foregroundColor(.red)
+                .onTapGesture {
+                    manager.end(activity: activity)
+                    manager.listAllDeliveries()
+                }
+        }.padding(.vertical)
     }
 }

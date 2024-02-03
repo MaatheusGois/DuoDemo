@@ -19,6 +19,13 @@
 		13BBEA8328A7DDA200FB1686 /* DuoTrackWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 13BBEA7528A7DDA100FB1686 /* DuoTrackWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		13BBEA8928A7DEAB00FB1686 /* DuoDemoAppAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA8828A7DEAB00FB1686 /* DuoDemoAppAttributes.swift */; };
 		13BBEA8A28A7DEAB00FB1686 /* DuoDemoAppAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA8828A7DEAB00FB1686 /* DuoDemoAppAttributes.swift */; };
+		2E0048C52B6E9D9300B61537 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048C42B6E9D9300B61537 /* NotificationManager.swift */; };
+		2E0048C72B6E9DC400B61537 /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048C62B6E9DC400B61537 /* DeepLinkManager.swift */; };
+		2E0048CB2B6E9FE500B61537 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048CA2B6E9FE500B61537 /* ActivityManager.swift */; };
+		2E0048CF2B6EAC4D00B61537 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048CE2B6EAC4D00B61537 /* DeepLink.swift */; };
+		2E0048D02B6EAC9300B61537 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048CE2B6EAC4D00B61537 /* DeepLink.swift */; };
+		2E0048D22B6EADD000B61537 /* ReflectiveEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048D12B6EADD000B61537 /* ReflectiveEquatable.swift */; };
+		2E0048D32B6EADE500B61537 /* ReflectiveEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0048D12B6EADD000B61537 /* ReflectiveEquatable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +69,11 @@
 		13BBEA8028A7DDA200FB1686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13BBEA8828A7DEAB00FB1686 /* DuoDemoAppAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoDemoAppAttributes.swift; sourceTree = "<group>"; };
 		13BBEA8E28A7FAE000FB1686 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E0048C42B6E9D9300B61537 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		2E0048C62B6E9DC400B61537 /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
+		2E0048CA2B6E9FE500B61537 /* ActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
+		2E0048CE2B6EAC4D00B61537 /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
+		2E0048D12B6EADD000B61537 /* ReflectiveEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectiveEquatable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,12 +120,10 @@
 		13BBEA6228A7DD5D00FB1686 /* DuoDemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				1352BAF228BF8028004CD5E7 /* DuoDemoApp.entitlements */,
-				13BBEA8E28A7FAE000FB1686 /* Info.plist */,
 				13BBEA6328A7DD5D00FB1686 /* DuoDemoAppApp.swift */,
 				13BBEA6528A7DD5D00FB1686 /* ContentView.swift */,
-				13BBEA8828A7DEAB00FB1686 /* DuoDemoAppAttributes.swift */,
-				13BBEA6728A7DD5D00FB1686 /* Assets.xcassets */,
+				2E0048CD2B6EAB4500B61537 /* Helpers */,
+				2E0048C92B6E9E4900B61537 /* SupportFiles */,
 				13BBEA6928A7DD5D00FB1686 /* Preview Content */,
 			);
 			path = DuoDemoApp;
@@ -145,6 +155,61 @@
 				13BBEA8028A7DDA200FB1686 /* Info.plist */,
 			);
 			path = DuoTrackWidget;
+			sourceTree = "<group>";
+		};
+		2E0048C22B6E9D7F00B61537 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				13BBEA8828A7DEAB00FB1686 /* DuoDemoAppAttributes.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2E0048C32B6E9D8900B61537 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				2E0048C42B6E9D9300B61537 /* NotificationManager.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		2E0048C82B6E9DD400B61537 /* DeepLink */ = {
+			isa = PBXGroup;
+			children = (
+				2E0048C62B6E9DC400B61537 /* DeepLinkManager.swift */,
+				2E0048CE2B6EAC4D00B61537 /* DeepLink.swift */,
+				2E0048D12B6EADD000B61537 /* ReflectiveEquatable.swift */,
+			);
+			path = DeepLink;
+			sourceTree = "<group>";
+		};
+		2E0048C92B6E9E4900B61537 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				1352BAF228BF8028004CD5E7 /* DuoDemoApp.entitlements */,
+				13BBEA8E28A7FAE000FB1686 /* Info.plist */,
+				13BBEA6728A7DD5D00FB1686 /* Assets.xcassets */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		2E0048CC2B6E9FEB00B61537 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				2E0048CA2B6E9FE500B61537 /* ActivityManager.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		2E0048CD2B6EAB4500B61537 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2E0048CC2B6E9FEB00B61537 /* Activity */,
+				2E0048C82B6E9DD400B61537 /* DeepLink */,
+				2E0048C32B6E9D8900B61537 /* Notification */,
+				2E0048C22B6E9D7F00B61537 /* Model */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,7 +314,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				13BBEA6628A7DD5D00FB1686 /* ContentView.swift in Sources */,
+				2E0048D22B6EADD000B61537 /* ReflectiveEquatable.swift in Sources */,
+				2E0048CF2B6EAC4D00B61537 /* DeepLink.swift in Sources */,
 				13BBEA8928A7DEAB00FB1686 /* DuoDemoAppAttributes.swift in Sources */,
+				2E0048CB2B6E9FE500B61537 /* ActivityManager.swift in Sources */,
+				2E0048C72B6E9DC400B61537 /* DeepLinkManager.swift in Sources */,
+				2E0048C52B6E9D9300B61537 /* NotificationManager.swift in Sources */,
 				13BBEA6428A7DD5D00FB1686 /* DuoDemoAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,6 +328,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E0048D02B6EAC9300B61537 /* DeepLink.swift in Sources */,
+				2E0048D32B6EADE500B61537 /* ReflectiveEquatable.swift in Sources */,
 				13BBEA8A28A7DEAB00FB1686 /* DuoDemoAppAttributes.swift in Sources */,
 				13BBEA7D28A7DDA100FB1686 /* DuoTrackWidget.swift in Sources */,
 			);
@@ -394,7 +466,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = DuoDemoApp/DuoDemoApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DuoDemoApp/SupportFiles/DuoDemoApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -403,7 +475,7 @@
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DuoDemoApp/Info.plist;
+				INFOPLIST_FILE = DuoDemoApp/SupportFiles/Info.plist;
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -431,7 +503,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = DuoDemoApp/DuoDemoApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DuoDemoApp/SupportFiles/DuoDemoApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -440,7 +512,7 @@
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DuoDemoApp/Info.plist;
+				INFOPLIST_FILE = DuoDemoApp/SupportFiles/Info.plist;
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
