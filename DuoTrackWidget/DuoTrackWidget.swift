@@ -152,7 +152,7 @@ struct BottomLineView: View {
                 width: 50,
                 height: 10
             )
-            .overlay(.gray).cornerRadius(5)
+//            .overlay(.gray).cornerRadius(5) iOS 15
             Image("delivery")
             VStack {
                 RoundedRectangle(cornerRadius: 5)
